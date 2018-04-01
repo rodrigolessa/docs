@@ -1,0 +1,9 @@
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\bin\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.deps.json
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\bin\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.dll
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\bin\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.pdb
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.csprojResolveAssemblyReference.cache
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.csproj.CoreCompileInputs.cache
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.AssemblyInfoInputs.cache
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.AssemblyInfo.cs
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.dll
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.Domain\obj\Debug\netstandard2.0\Analyzing.Quality.Tools.Domain.pdb
