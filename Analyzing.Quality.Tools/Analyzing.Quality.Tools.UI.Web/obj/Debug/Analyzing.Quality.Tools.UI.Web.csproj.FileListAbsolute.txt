@@ -96,3 +96,7 @@ D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\obj\Debug\Analyzing.Quality.Tools.UI.Web.csproj.CopyComplete
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\obj\Debug\Analyzing.Quality.Tools.UI.Web.dll
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\obj\Debug\Analyzing.Quality.Tools.UI.Web.pdb
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\bin\EntityFramework.dll
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\bin\EntityFramework.SqlServer.dll
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\bin\EntityFramework.xml
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web\bin\EntityFramework.SqlServer.xml

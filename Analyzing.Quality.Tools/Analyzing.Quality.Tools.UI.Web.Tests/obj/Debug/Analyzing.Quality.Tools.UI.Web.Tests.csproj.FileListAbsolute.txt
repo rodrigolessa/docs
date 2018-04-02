@@ -40,3 +40,7 @@ D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\obj\Debug\Analyzing.Quality.Tools.UI.Web.Tests.csproj.CopyComplete
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\obj\Debug\Analyzing.Quality.Tools.UI.Web.Tests.dll
 D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\obj\Debug\Analyzing.Quality.Tools.UI.Web.Tests.pdb
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\bin\Debug\EntityFramework.dll
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\bin\Debug\EntityFramework.xml
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\bin\Debug\Analyzing.Quality.Tools.UI.Web.Tests.dll.CodeAnalysisLog.xml
+D:\github\DocBoasPraticas\Analyzing.Quality.Tools\Analyzing.Quality.Tools.UI.Web.Tests\bin\Debug\Analyzing.Quality.Tools.UI.Web.Tests.dll.lastcodeanalysissucceeded
