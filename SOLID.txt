@@ -1,0 +1,16 @@
+SOLID :
+
+1.	S - SRP - Single responsibility principle
+Cada Classe ou Método deve ter um só propósito.
+2.	O - OCP - Open/closed principle
+the notion that “software entities … should be open for extension, but closed for modification”.
+3.	L - LSP - Liskov substitution principle
+the notion that “objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program”. See also design by contract.
+4.	I - ISP - Interface segregation principle
+the notion that “many client specific interfaces are better than one general purpose interface.
+5.	D - DIP - Dependency inversion principle
+the notion that one should “Depend upon Abstractions. Do not depend upon concretions.. Dependency injection is one method of following this principle.
+ 
+YAGNI: You Ain't Gonna Need It = Sugere que o programador que não adicione funcionalidade ao código que não seja realmente necessária. Só se deve implementar o que realmente precisa e não o que se prevê.
+ 
+KISS: Keep It Simple, Stupid = É um princípio que valoriza a simplicidade no projeto, defende que toda a complexidade desnecessária seja descartada.

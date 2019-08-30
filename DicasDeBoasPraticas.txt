@@ -1,0 +1,240 @@
+Nesta seção, estaremos enumerando algumas dicas rápidas “do que fazer” (FAÇA) e “do que não fazer” (EVITE) na plataforma .Net Framework:
+
+
+	FAÇA - Não há problemas em classes e métodos com nomes extensos, caso este comunique de maneira melhor aquilo que a sua classe ou método realiza.
+
+	FAÇA - Utilize exceções que comuniquem ao desenvolvedor que este infringiu alguma regra na utilização de algum método, de modo que este possa ser tratado da maneira correta pelo desenvolvedor (esta dica se aplica mais para a construção de métodos do framework).
+
+	FAÇA - Strong Typing – Sempre que possível exponha os membros de suas classes de forma tipada, isso facilita o desenvolvimento, a utilização das classes e encapsula as regras de acesso em apenas um lugar:
+
+Código Ruim:
+String nome = (String)Customer.Properties[“Name”];
+Código bom:
+String nome = Customer.Properties.Name;
+
+
+
+	FAÇA – Utilize nomes cuja leitura seja fluente, por exemplo, uma propriedade HorizontalAlignment é melhor do que uma propriedade AlignmentHorizontal, ou seja, antes de nomear uma classe ou uma propriedade pensar no contexto em que estes serão utilizados.
+
+	FAÇA – Utilize a clareza sobre a brevidade, prefira CanScrollHorizontally sobre ScrollableX
+
+	EVITAR – Não utilize Underscores ‘_’, Hífens ‘-’ ou outros caracteres não-alfabéticos em nomes de Classes, membros (Exceção a esta regra em elementos privados com UpperCase tais como constantes e variáveis de leitura pode ser utilizado underscores).
+
+	EVITAR – Não utilizar notação húngara, ou seja, colocar um prefixo para identificar o tipo da variável. Se o nome da mesma for escolhido de forma correta, este não é necessário, prefira NumeroVidas a intNumeroVidas, além disso, a ferramenta de desenvolvimento já nos ajuda nesta tarefa. Tentar sempre colocar um nome relacionado com aquilo que a variável guarda.
+
+	FAÇA – Utilize nomes semanticamente interessantes ao contrário de nomes específicos da linguagem, exemplo prefira GetLength ao invés de GetInt.
+
+	FAÇA – Prefira os tipos do CLR (Common Languange Runtime) sobre os nomes da linguagem, tais como Object ao contrário object, Int32 ao invés de int, etc. Pois facilita o entendimento, evita confusões e minimiza o trabalho de migração de código entre as linguagens do .Net.
+
+	EVITAR – Não utilizar o mesmo nome para Namespaces e Tipos (Classes).
+
+	EVITAR – Não utilizar o prefixo “C” antes de classes.
+
+	FAÇA – Considerar colocar o final do nome de uma classe derivada com o nome da classe base, exemplo: Exception e ArgumentNullException
+
+	FAÇA – Colocar o prefixo I nas definições de interface.
+
+	FAÇA – Utilizar o tipo de uma classe genérica, como T quando este for único e bem genérico, ou seja, não há restrições para os tipos a serem passados. Exemplo:
+public interface IComparer<T>
+	FAÇA – Quando uma classe ou método possuir mais de um tipo genérico a ser passado por parâmetro, colocar uma breve explanação sobre o que trata o Tipo.
+No exemplo, o primeiro tipo se refere ao tipo da chave e o segundo ao tipo do valor a ser passado para o dicionário.
+public interface IDictionary<TKey, TValue>
+Esta regra pode ser aplicada também quando se espera determinado comportamento do tipo esperado pela classe. No exemplo do código a seguir espera-se que o tipo implemente a interface ISession, portanto, faz todo sentido utilizar TSession ao invés de T somente, pois comunica melhor o seu intuito:
+public interface ISessionChannel<TSession> where TSession : ISession
+
+
+
+	FAÇA – Considerar a utilização de contraints para tipos genéricos, de modo a limitar os tipos que podem ser passados por parâmetros, de acordo com a responsabilidade da classe e o que ela espera do tipo genérico. Por exemplo, quando for necessário garantir determinadas características básicas que o seu tipo deve possuir, considerar a utilização de constraints (atenção para o termo utilizado considerar: não deve ser utilizado indiscriminadamente, pois deve haver um contexto onde este se mostre a melhor opção):
+public interface IRepository<TId, TEntity> where TEntity : IIdentifier
+{
+	TEntity FindById(TId id);
+}
+ou seja o tipo TEntity passado deve implementar a interface IIdentifier.
+	EVITAR – Não utilizar o sufixo Enum para tipos Enum, prefira Color sobre ColorEnum.
+
+	EVITAR – Não herdar da classe básica System.Enum, utilizar a palavra-chave (keyword) específica da linguagem, no caso do C#, enum.
+
+	FAÇA – Defina um valor para todos os elementos de um Enum, de modo a definir um valor único para cada valor. Não deixar que o compilador defina automaticamente, pois pode ser incluído um novo valor acima dos valores existentes, trocando o valor gerado pelo compilador, por exemplo:
+Inicialmente, o compilador gerará automaticamente o valor 0 para Black, 1 para Blue, e 2 para Cyan:
+public enum ConsoleColorEnum
+{
+	Black,
+	Blue,
+	Cyan
+}
+
+
+Após é incluída uma nova cor Green acima de Blue, agora os valores gerados automaticamente serão, 0 para Black, 1 para Green, 2 para Blue e 3 para Cyan, podendo quebrar algum código pré-existente. 
+public enum ConsoleColor
+{
+	Black,
+	Green,
+	Blue,
+	Cyan
+}
+	FAÇA – Utilize um atributo System.ComponentModel.DescriptionAtribute acima de cada elemento de um Enum, este pode ser utilizado para elementos de interface como DropDownLists, RadioButtonLists, etc.
+Exemplo de enum Errado:
+public enum ConsoleColor
+{
+	Black,
+	Blue,
+	Cyan
+}
+Exemplo de enum correto:
+public enum ConsoleColor
+{
+	[Decription(“Black Color”)]
+	Black = 0,
+	[Decription(“Blue Color”)]
+	Blue = 1,
+	[Decription(“Cyan Color”)]
+	Cyan = 2,
+}
+
+	FAÇA – Sempre defina um construtor default padrão ao criar uma nova classe. Não deixe o compilador criá-lo para você, pois após ser criado um construtor personalizado, quebra de código legado pode ocorrer, uma vez que referenciava o construtor padrão que, após a inclusão do construtor personalizado, não existe mais.
+
+Exemplo: Inicialmente a classe Exemplo não contém o construtor default, ele será gerado automaticamente pelo compilador da linguagem, no caso do exemplo o C#.
+public class Exemplo
+{
+}
+Após algum tempo se fez necessário criar a propriedade Propriedade1 e junto com ela um construtor personalizado.
+public class Exemplo
+{
+	private String _propriedade1;
+	public String Propriedade1
+	{
+		get { return this._propriedade1; }
+	}
+	public Exemplo(String propriedade1)
+	{
+		this._propriedade1 = propriedade1;
+	}
+}
+Bastou a adição deste novo construtor para possibilitar a quebra de código já existente nas aplicações que se utilizam da classe Exemplo, pois antes eles utilizavam o construtor padrão Exemplo(), que agora já não existe mais, uma vez que o compilador do C# somente gera um construtor caso não exista nenhum. Por esta razão todas as classes devem ser criadas já colocando o construtor default. A exceção a esta regra deve ser considerada quando, explicitamente, não é desejável que o construtor default exista, forçando a entrada de dados pelo usuário.
+	EVITAR – Não utilizar textos hardcoded, pois estes dificultam a manutenção.
+Ruim:
+Fatura fatura = Session[“FaturaAtiva”] as Fatura; 
+Melhor:
+private static readonly FATURA_ATIVA = “FaturaAtiva”;
+…
+Fatura fatura = Session[FATURA_ATIVA] as Fatura;
+	EVITAR – Não utilizar diretamente a Session, fazê-lo por intermédio do encapsulamento de propriedades de objetos.
+
+Ruim:
+private static readonly FATURA_ATIVA = “FaturaAtiva”;
+…
+Fatura fatura = Session[FATURA_ATIVA] as Fatura; 
+Melhor:
+private static readonly FATURA_ATIVA = “FaturaAtiva”;
+public Fatura FaturaAtiva
+{
+	get
+	{
+		if(Session[FATURA_ATIVA] == null)
+			Session[FATURA_ATIVA] = new Fatura();
+		return Session[FATURA_ATIVA] as Fatura;
+	}
+	set { Session[FATURA_ATIVA] = value; }
+}
+…
+Fatura fatura = this.FaturaAtiva;
+	EVITAR - Não colocar objetos em demasia na Session, pois estes ficarão ocupando espaços desnecessários na memória do Servidor, atrapalhando a performance das aplicações, uma vez que apenas um objeto por vez é utilizado em cada contexto, ou seja, em cada página. 
+Ruim:
+private static readonly FATURA_ATIVA = “FaturaAtiva”;
+private static readonly ITEM_FATURA_ATIVA = “ItemFaturaAtiva”;
+public Fatura FaturaAtiva
+{
+	get
+	{
+		if(Session[FATURA_ATIVA] == null)
+			Session[FATURA_ATIVA] = new Fatura();
+		return Session[FATURA_ATIVA] as Fatura;
+	}
+	set { Session[FATURA_ATIVA] = value; }
+}
+public ItemFatura ItemFaturaAtiva
+{
+	get
+	{
+		if(Session[ITEM_FATURA_ATIVA] == null)
+			Session[ITEM_FATURA_ATIVA] = new ItemFatura();
+		return Session[ITEM_FATURA_ATIVA] as ItemFatura;
+	}
+
+
+	set { Session[ITEM_FATURA_ATIVA] = value; }
+}
+…
+
+//Na página de Fatura:
+Fatura fatura = this.FaturaAtiva;
+//Na página de ItemFatura:
+ItemFatura itemFatura = this.ItemFaturaAtiva;
+
+Melhor:
+private static readonly OBJETO_ATIVO = “ObjetoAtivo”;
+public Object ObjetoAtivo
+{
+	get { return Session[OBJETO_ATIVO]; }
+	set { Session[OBJETO_ATIVO] = value; }
+}
+…
+//Na página de Fatura:
+Fatura fatura = this.ObjetoAtivo as Fatura;
+//Na página de ItemFatura:
+ItemFatura itemFatura = this.ObjetoAtivo as ItemFaturaAtiva;
+
+public Fatura FaturaAtiva
+{
+	get
+	{
+		if(!this.ObjetoAtivo is Fatura)
+			throw new InvalidOperationException(“O tipo do objeto ativo não é do tipo Fatura.”);
+		return this.ObjetoAtivo as Fatura;
+	}
+	set { this.ObjetoAtivo = value; }
+}
+public ItemFatura ItemFaturaAtiva
+{
+	get
+	{
+		if(!this.ObjetoAtivo is ItemFatura)
+			throw new InvalidOperationException(“O tipo do objeto ativo não é do tipo ItemFatura.”);
+		return this.ObjetoAtivo as ItemFatura;
+	}
+	set { this.ObjetoAtivo = value; }
+}
+	FAÇA – Utilizar preferencialmente o tipo Decimais para valores monetários, pois estes têm uma precisão maior do que o Double.
+
+	FAÇA – Trocar variáveis locais por métodos de Pesquisa.
+
+
+Métodos
+	FAÇA – Nomes de métodos devem indicar um ação, devem ser verbos e estar no infinitivo. 
+
+Exemplo:
+ProcessarFolhaPagemento();
+ExecutarProcessoBackup();
+CalcularPagamento();
+Propriedades
+	FAÇA – Nomes de Propriedades devem ser nomes ou adjetivos, pois se referem a características da classe.
+
+Exemplo:
+public abstract class Pessoa
+{
+	public Double Altura { get; set; }
+	public Double Peso { get; set; }
+}
+EVITAR – Não nomeie propriedades com o sufixo Get.
+
+	FAÇA – Nomeie propriedades Booleanas com frases afirmativas. Por exemplo CanSeek é melhor do que CantSeek. Os prefixos em inglês Is, Can, Has podem ser utilizados.
+
+Eventos
+	FAÇA – Nomeie eventos com uma ação ou frase verbal, exemplos: Clicked, DroppedDown.
+
+	FAÇA – Nomeie handlers de eventos (delegates) com o sufixo EventHandler.
+
+
+	FAÇA – Utilize o nome ‘sender’ e ‘e’ para os parâmetros dos EventHandlers.
+
+	FAÇA – Nomeie classes que herdem de EventArgs com o sufixo EventsArgs.

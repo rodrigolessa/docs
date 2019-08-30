@@ -1,0 +1,8 @@
+
+Check List - Entregáveis de Desenvolvimento
+
+Documento de Boas Práticas
+
+Relatório Para Cobertura De Código
+
+Arquitetura de Software para dotNet baseada em DDD
